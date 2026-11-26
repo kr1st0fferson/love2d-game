@@ -23,7 +23,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.draw(Background, 0,0)
+    love.graphics.setBackgroundColor(0,1,0,0)
     love.graphics.draw(Player.sprite, Player.x, Player.y)
     
 end
