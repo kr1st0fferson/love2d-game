@@ -1,9 +1,14 @@
 function love.load()
+    local anim8 = require 'libraries.anim8'
+    anim8 = require 'libraries/anim8.lua'
+
     Player = {}
     Player.x = 400
     Player.y = 200
     Player.speed = 8
    
+    Player.grid = anim8.newGrid(34, 32)
+
     Player.spritesheet = love.graphics.newImage('assets/sprites/knight.png')
     Background = love.graphics.newImage('assets/shadow.jpg')
 end
