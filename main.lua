@@ -11,7 +11,9 @@ function love.load()
     Player.spritesheet = love.graphics.newImage('assets/sprites/knight.png')
 
     --[[ creating a grid ]]
-    Player.grid = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
+    local grids = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
+    --[[ getting the right frames ]]
+    local frames = grids(1, '1-4', 1)
 end
 
 function love.update(dt)
@@ -29,8 +31,7 @@ function love.update(dt)
         Player.y = Player.y + Player.speed
     end
 
-    --[[ getting the right frames ]]
-    g:(1, '1-4')
+    
 
     --[[ animation ]]
     Player.animations = {}
