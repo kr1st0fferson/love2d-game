@@ -15,7 +15,9 @@ function love.load()
     --[[ created grid ]]
     Player.grid = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
 
+    --[[ creates an empty animation table ]]
     Player.animations = {}
+    
     Player.animations.idle = anim8.newAnimation(Player.grid('1-4', 1), 0.2)
     Player.animations.run = anim8.newAnimation(Player.grid('1-8', '3-4'), 0.1)
 
