@@ -3,6 +3,7 @@ function love.load()
     player.x = 400
     player.y = 200
     player.speed = 8
+    player.sprite = love.graphics.newImage('assets/sprites/sonic.png')
 end
 
 function love.update(dt)
@@ -21,6 +22,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.circle("fill", player.x, player.y, 100)
+    love.graphics.draw(player.sprite, player.x, player.y)
 end
 
