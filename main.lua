@@ -9,7 +9,8 @@ function love.load()
     Player.y = 200
     Player.speed = 8
    
-    --[[ added spritesheet]]
+    --[[ added spritesheet
+    help im actually confused idk what im doing]]
     player.idle = love.graphics.newImage('assets/sprites/16x16 Idle-Sheet.png')
     player.run = love.graphics.newImage('assets/sprites/16x16 Run-Sheet.png')
 
