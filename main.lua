@@ -1,5 +1,5 @@
 function love.load()
-    local anim8 = require 'anim8'
+    local anim8 = require 'libraries.anim8'
     anim8 = require 'libraries/anim8.lua'
 
     Player = {}
@@ -12,8 +12,12 @@ function love.load()
 
     --[[ creating a grid ]]
     local grids = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
+
     --[[ getting the right frames ]]
     local frames = grids(1, '1-4', 1)
+
+    Player.animations = {}
+    Player.animations.down = anim8.newAnimation(frames, 0.2)
 end
 
 function love.update(dt)
@@ -29,6 +33,7 @@ function love.update(dt)
 
     elseif love.keyboard.isDown("down") then
         Player.y = Player.y + Player.speed
+        Player.animations.down: update(dt)
     end
 
     
