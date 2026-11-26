@@ -1,5 +1,8 @@
 function love.load()
-    anim8 = require 'libraries.anim8'
+    local anim8 = require 'libraries.anim8'
+
+    --[[ making the pixels sharper ]]
+    love.graphics.setDefaultFilter("nearest")
 
     Player = {}
     Player.x = 400
@@ -40,6 +43,6 @@ function love.draw()
     --[[ background ]]
     love.graphics.setBackgroundColor(0,0,1,1)
 
-    Player.animations.idle: draw(Player.spritesheet, Player.x, Player.y)
+    Player.animations.idle: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
 end
 
