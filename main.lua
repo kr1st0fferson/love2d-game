@@ -7,13 +7,15 @@ function love.load()
     Player.y = 200
     Player.speed = 8
    
-    Player.grid = anim8.newGrid(34, 32)
-
+    --[[ added spritesheet]]
     Player.spritesheet = love.graphics.newImage('assets/sprites/knight.png')
-    Background = love.graphics.newImage('assets/shadow.jpg')
+
+    --[[ creating a grid ]]
+    Player.grid = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
 end
 
 function love.update(dt)
+    --[[ player movement using keyboard ]]
     if love.keyboard.isDown("left") then
         Player.x = Player.x - Player.speed
 
@@ -26,11 +28,17 @@ function love.update(dt)
     elseif love.keyboard.isDown("down") then
         Player.y = Player.y + Player.speed
     end
+
+    --[[ animation ]]
+    Player.animations = {}
+    
+
 end
 
 function love.draw()
+    --[[ background ]]
     love.graphics.setBackgroundColor(0,0,1,1)
-    love.graphics.draw(Player.sprite, Player.x, Player.y)
+
     
 end
 
