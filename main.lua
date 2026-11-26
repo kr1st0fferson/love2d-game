@@ -1,6 +1,5 @@
 function love.load()
-    local anim8 = require 'libraries.anim8'
-    anim8 = require 'libraries/anim8.lua'
+    anim8 = require 'libraries.anim8'
 
     Player = {}
     Player.x = 400
@@ -10,17 +9,16 @@ function love.load()
     --[[ added spritesheet]]
     Player.spritesheet = love.graphics.newImage('assets/sprites/knight.png')
 
-    --[[ creating a grid ]]
-    local grids = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
-
-    --[[ getting the right frames ]]
-    local frames = grids(1, '1-4', 1)
+    --[[ created grid ]]
+    Player.grid = anim8.newGrid(32, 32, Player.spritesheet: getWidth(), Player.spritesheet: getHeight())
 
     Player.animations = {}
-    Player.animations.down = anim8.newAnimation(frames, 0.2)
+    Player.animations.idle = anim8.newAnimation(Player.grid('1-4', 1), 0.2)
 end
 
 function love.update(dt)
+    Player.animations.idle: update(dt)
+
     --[[ player movement using keyboard ]]
     if love.keyboard.isDown("left") then
         Player.x = Player.x - Player.speed
@@ -33,14 +31,8 @@ function love.update(dt)
 
     elseif love.keyboard.isDown("down") then
         Player.y = Player.y + Player.speed
-        Player.animations.down: update(dt)
+       
     end
-
-    
-
-    --[[ animation ]]
-    Player.animations = {}
-    
 
 end
 
@@ -48,6 +40,6 @@ function love.draw()
     --[[ background ]]
     love.graphics.setBackgroundColor(0,0,1,1)
 
-    
+    Player.animations.idle: draw(Player.spritesheet, Player.x, Player.y)
 end
 
