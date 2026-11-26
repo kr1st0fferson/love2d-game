@@ -17,22 +17,27 @@ function love.load()
 
     Player.animations = {}
     Player.animations.idle = anim8.newAnimation(Player.grid('1-4', 1), 0.2)
+
+    Player.animations.run = anim8.newAnimation(Player.grid('1-8', '3-4'), 0.1)
 end
 
 function love.update(dt)
-    Player.animations.idle: update(dt)
 
     --[[ player movement using keyboard ]]
     if love.keyboard.isDown("left") then
+        Player.animations.run: update(dt)
         Player.x = Player.x - Player.speed
 
     elseif love.keyboard.isDown("right") then
+        Player.animations.run: update(dt)
         Player.x = Player.x + Player.speed
 
     elseif love.keyboard.isDown("up") then
+        Player.animations.run: update(dt)
         Player.y = Player.y - Player.speed
 
     elseif love.keyboard.isDown("down") then
+        Player.animations.run: update(dt)
         Player.y = Player.y + Player.speed
        
     end
@@ -43,6 +48,7 @@ function love.draw()
     --[[ background ]]
     love.graphics.setBackgroundColor(0,0,1,1)
 
-    Player.animations.idle: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
+   
+    Player.animations.run: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
 end
 
