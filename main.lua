@@ -1,27 +1,28 @@
 function love.load()
-    player = {}
-    player.x = 400
-    player.y = 200
-    player.speed = 8
-    player.sprite = love.graphics.newImage('assets/sprites/sonic.png')
+    Player = {}
+    Player.x = 400
+    Player.y = 200
+    Player.speed = 8
+    Player.sprite = love.graphics.newImage('assets/sprites/sonic.png')
+    Background = love.graphics.newImage('assets/shadow.jpg')
 end
 
 function love.update(dt)
     if love.keyboard.isDown("left") then
-        player.x = player.x - player.speed
+        Player.x = Player.x - Player.speed
 
     elseif love.keyboard.isDown("right") then
-        player.x = player.x + player.speed
+        Player.x = Player.x + Player.speed
 
     elseif love.keyboard.isDown("up") then
-        player.y = player.y - player.speed
+        Player.y = Player.y - Player.speed
 
     elseif love.keyboard.isDown("down") then
-        player.y = player.y + player.speed
+        Player.y = Player.y + Player.speed
     end
 end
 
 function love.draw()
-    love.graphics.draw(player.sprite, player.x, player.y)
+    love.graphics.draw(Player.sprite, Player.x, Player.y)
 end
 
