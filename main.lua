@@ -1,5 +1,5 @@
 function love.load()
-    local anim8 = require 'libraries.anim8'
+    local anim8 = require 'anim8'
     anim8 = require 'libraries/anim8.lua'
 
     Player = {}
@@ -28,6 +28,9 @@ function love.update(dt)
     elseif love.keyboard.isDown("down") then
         Player.y = Player.y + Player.speed
     end
+
+    --[[ getting the right frames ]]
+    g:(1, '1-4')
 
     --[[ animation ]]
     Player.animations = {}
