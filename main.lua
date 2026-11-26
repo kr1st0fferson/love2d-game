@@ -3,7 +3,8 @@ function love.load()
     Player.x = 400
     Player.y = 200
     Player.speed = 8
-    Player.sprite = love.graphics.newImage('assets/sprites/sonic.png')
+   
+    Player.spritesheet = love.graphics.newImage('assets/sprites/knight.png')
     Background = love.graphics.newImage('assets/shadow.jpg')
 end
 
@@ -23,7 +24,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.setBackgroundColor(0,1,0,0)
+    love.graphics.setBackgroundColor(0,0,1,1)
     love.graphics.draw(Player.sprite, Player.x, Player.y)
     
 end
