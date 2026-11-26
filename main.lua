@@ -17,42 +17,47 @@ function love.load()
 
     Player.animations = {}
     Player.animations.idle = anim8.newAnimation(Player.grid('1-4', 1), 0.2)
-
     Player.animations.run = anim8.newAnimation(Player.grid('1-8', '3-4'), 0.1)
+
+    playanim = Player.animations.idle
+    
 end
 
 function love.update(dt)
     local knightmoving = false
 
     if knightmoving == false then
-        Player.animations.idle: update(dt)
+        playanim = Player.animations.idle
+        playanim: update(dt)
     end
 
-    --[[ player movement using keyboard ]]
+    --[[ knight moving left ]]
     if love.keyboard.isDown("left") then
         knightmoving = true
-        Player.animations.run: update(dt)
+        playanim = Player.animations.run
+        playanim: update(dt)
         Player.x = Player.x - Player.speed
-        
-
+    
+    --[[ knight moving right ]]
     elseif love.keyboard.isDown("right") then
         knightmoving = true
-        Player.animations.run: update(dt)
+        playanim = Player.animations.run
+        playanim: update(dt)
         Player.x = Player.x + Player.speed
         
-
+    --[[ knight moving up ]]
     elseif love.keyboard.isDown("up") then
         knightmoving = true
-        Player.animations.run: update(dt)
+        playanim = Player.animations.run
+        playanim: update(dt)
         Player.y = Player.y - Player.speed
-        
-
+      
+    --[[ knight moving down ]]
     elseif love.keyboard.isDown("down") then
         knightmoving = true
-        Player.animations.run: update(dt)
+        playanim = Player.animations.run
+        playanim: update(dt)
         Player.y = Player.y + Player.speed
-        
-       
     end
 
 end
@@ -60,7 +65,7 @@ end
 function love.draw()
     --[[ background ]]
     love.graphics.setBackgroundColor(0,0,1,1)
-    Player.animations.run: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
-    Player.animations.idle: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
+
+    playanim: draw(Player.spritesheet, Player.x, Player.y, nil, 5)
 end
 
