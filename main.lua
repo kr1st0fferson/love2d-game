@@ -41,34 +41,33 @@ function love.draw()
 
     love.graphics.setColor(1,1,1)
     love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
+
+    if checkCollision(myrectangle, ball) then
+        print("collision detected")
+    else 
+        print("collision not detected")
+    end
 end
 
-function checkCollision(myrectangle, ball)
-    local myrectangle_left = myrectangle.x
-    local myrectangle_right = myrectangle.x + myrectangle.width
-    local myrectangle_top = myrectangle.y + myrectangle.height
-    local myrectangle_bottom = myrectangle.y
+function checkCollision(a, b)
+    local a_left = a.x
+    local a_right = a.x + a.width
+    local a_top = a.y + a.height
+    local a_bottom = a.y
 
-    local ball_left = ball.x
-    local ball_right = ball.x + ball.width
-    local ball_bottom = ball.y 
-    local ball_top = ball.y + ball.height
+    local b_left = b.x
+    local b_right = b.x + b.width
+    local b_bottom = b.y 
+    local b_top = b.y + b.height
 
-    if myrectangle_right > ball_left
-    and myrectangle_left < ball_right
-    and myrectangle_bottom > ball_top
-    and myrectangle_top < ball_bottom then
+    if a_right > b_left
+    and a_left < b_right
+    and a_bottom > b_top
+    and a_top < b_bottom then
         return true
     else 
         return false
     end
-
-    function love.draw ()
-       
-        if checkCollision(myrectangle, ball) then
-            print("collision detected")
-        else 
-            print("collision not detected")
-        end
-    end
 end
+
+
