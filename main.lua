@@ -43,9 +43,9 @@ function love.draw()
     love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
 
     if checkCollision(myrectangle, ball) then
-        print("collision detected")
+        love.graphics.print("collision detected", 100, 100)
     else 
-        print("collision not detected")
+        love.graphics.print("collision not detected", 100, 100)
     end
 end
 
@@ -69,5 +69,3 @@ function checkCollision(a, b)
         return false
     end
 end
-
-
