@@ -3,10 +3,17 @@ function love.load()
     myrectangle.x = 10
     myrectangle.y = 300
 
+    myrectangle.speed = 300
 end
 
 function love.update(dt)
-   
+   if love.keyboard.isDown("up") then
+        myrectangle.y = myrectangle.y - (myrectangle.speed * dt)
+   end
+
+   if love.keyboard.isDown("down") then
+        myrectangle.y = myrectangle.y + (myrectangle.speed * dt)
+   end
 end
 
 function love.draw()
