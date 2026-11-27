@@ -10,6 +10,8 @@ function love.load()
     ball = {}
     ball.x = 400
     ball.y = 400
+    ball.width = 10
+    ball.height = 10
 end
 
 function love.update(dt)
@@ -30,10 +32,14 @@ function love.draw()
     love.graphics.rectangle("fill", 778, 300, 10, 90)
 
     love.graphics.setColor(1,1,1)
-    love.graphics.circle("fill", ball.x, ball.y, 10)
+    love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
 end
 
 function checkCollision(myrectangle, ball)
     local myrectangle_left = myrectangle.x
     local myrectangle_right = myrectangle.x + myrectangle.width
+    local myrectangle_top = myrectangle.y + myrectangle.height
+    local myrectangle_bottom = myrectangle.y
+
+
 end
