@@ -22,6 +22,14 @@ function love.update(dt)
    if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
         myrectangle.y = myrectangle.y + (myrectangle.speed * dt)
    end
+
+   if love.keyboard.isDown("left") or love.keyboard.isDown("a") then
+        myrectangle.x = myrectangle.x - (myrectangle.speed * dt)
+   end
+
+   if love.keyboard.isDown("right") or love.keyboard.isDown("d") then
+        myrectangle.x = myrectangle.x + (myrectangle.speed * dt)
+   end
 end
 
 function love.draw()
@@ -46,4 +54,21 @@ function checkCollision(myrectangle, ball)
     local ball_bottom = ball.y 
     local ball_top = ball.y + ball.height
 
+    if myrectangle_right > ball_left
+    and myrectangle_left < ball_right
+    and myrectangle_bottom > ball_top
+    and myrectangle_top < ball_bottom then
+        return true
+    else 
+        return false
+    end
+
+    function love.draw ()
+       
+        if checkCollision(myrectangle, ball) then
+            print("collision detected")
+        else 
+            print("collision not detected")
+        end
+    end
 end
