@@ -10,6 +10,14 @@ function love.load()
 
     player1.speed = 300
 
+    player2= {}
+    player2.x = 780
+    player2.y = 300
+    player2.width = 10
+    player2.height = 90
+
+    player2.speed = 300
+
     ball = {}
     ball.x = 400
     ball.y = 400
@@ -21,20 +29,20 @@ function love.load()
 end
 
 function love.update(dt)
-   if love.keyboard.isDown("up") or love.keyboard.isDown("w") then
+   if love.keyboard.isDown("up") then
         player1.y = player1.y - (player1.speed * dt)
    end
 
-   if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
+   if love.keyboard.isDown("down") then
         player1.y = player1.y + (player1.speed * dt)
    end
 
-   if love.keyboard.isDown("left") or love.keyboard.isDown("a") then
-        player1.x = player1.x - (player1.speed * dt)
+   if love.keyboard.isDown("w") then
+        player2.y = player2.y - (player2.speed * dt)
    end
 
-   if love.keyboard.isDown("right") or love.keyboard.isDown("d") then
-        player1.x = player1.x + (player1.speed * dt)
+   if love.keyboard.isDown("s") then
+        player2.y = player2.y + (player2.speed *dt)
    end
 
    ball.x = ball.x + ball.dx * ball.speed * dt
@@ -47,6 +55,10 @@ function love.update(dt)
         ball.y = win_height - (ball.width + ball.height)
         ball.dy = -ball.dy
    end
+
+   if checkCollision(player1, ball) then
+        ball.dx = -ball.dx
+   end
 end
 
 function love.draw()
@@ -54,16 +66,10 @@ function love.draw()
     love.graphics.rectangle("fill", player1.x, player1.y, player1.width, player1.height)
 
     love.graphics.setColor(1,1,1)
-    love.graphics.rectangle("fill", 778, 300, 10, 90)
+    love.graphics.rectangle("fill", player2.x, player2.y, player2.width, player2.height)
 
     love.graphics.setColor(1,1,1)
     love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
-
-    if checkCollision(player1, ball) then
-        love.graphics.print("collision detected", 100, 100)
-    else 
-        love.graphics.print("collision not detected", 100, 100)
-    end
 end
 
 function checkCollision(a, b)
@@ -82,3 +88,13 @@ function checkCollision(a, b)
         and a_bottom > b_top
         and a_top < b_bottom
 end
+
+--[[ local function bounceoffpaddle(paddle, towardDir)
+    local paddlecenter = paddle.y + paddle.height / 2
+    local ballcenter = ball.y + (ball.width + ball.height) /2
+    local offset = (ballcenter - paddlecenter)
+    local angle = offset * (math.pi /4)
+
+    ball.dx = towardDir * math.cos(angle)
+    ball.dy = math.sin(angle)
+end ]]
