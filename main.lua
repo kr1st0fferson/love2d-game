@@ -36,6 +36,11 @@ function love.update(dt)
 
    ball.x = ball.x + ball.dx * ball.speed * dt
    ball.y = ball.y + ball.dy * ball.speed * dt
+
+   if ball.y < 0 then
+        ball.y = 0
+        ball.dy = -ball.dy --[[ flips in the vertical direction ]]
+   end
 end
 
 function love.draw()
