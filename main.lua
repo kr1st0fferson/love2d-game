@@ -25,7 +25,7 @@ function love.load()
     ball.height = 10
     ball.dx = 10
     ball.dy = 10
-    ball.speed = 30
+    ball.speed = 25
 end
 
 function love.update(dt)
@@ -92,13 +92,3 @@ function checkCollision(a, b)
         and a_bottom > b_top
         and a_top < b_bottom
 end
-
---[[ local function bounceoffpaddle(paddle, towardDir)
-    local paddlecenter = paddle.y + paddle.height / 2
-    local ballcenter = ball.y + (ball.width + ball.height) /2
-    local offset = (ballcenter - paddlecenter)
-    local angle = offset * (math.pi /4)
-
-    ball.dx = towardDir * math.cos(angle)
-    ball.dy = math.sin(angle)
-end ]]
