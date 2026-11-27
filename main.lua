@@ -15,11 +15,11 @@ function love.load()
 end
 
 function love.update(dt)
-   if love.keyboard.isDown("up") then
+   if love.keyboard.isDown("up") or love.keyboard.isDown("w") then
         myrectangle.y = myrectangle.y - (myrectangle.speed * dt)
    end
 
-   if love.keyboard.isDown("down") then
+   if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
         myrectangle.y = myrectangle.y + (myrectangle.speed * dt)
    end
 end
