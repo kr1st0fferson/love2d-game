@@ -41,5 +41,9 @@ function checkCollision(myrectangle, ball)
     local myrectangle_top = myrectangle.y + myrectangle.height
     local myrectangle_bottom = myrectangle.y
 
+    local ball_left = ball.x
+    local ball_right = ball.x + ball.width
+    local ball_bottom = ball.y 
+    local ball_top = ball.y + ball.height
 
 end
