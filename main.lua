@@ -4,6 +4,10 @@ function love.load()
     myrectangle.y = 300
 
     myrectangle.speed = 300
+
+    ball = {}
+    ball.x = 400
+    ball.y = 400
 end
 
 function love.update(dt)
@@ -22,4 +26,7 @@ function love.draw()
 
     love.graphics.setColor(1,1,1)
     love.graphics.rectangle("fill", 778, 300, 10, 90)
+
+    love.graphics.setColor(1,1,1)
+    love.graphics.circle("fill", ball.x, ball.y, 10)
 end
