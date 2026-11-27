@@ -12,6 +12,9 @@ function love.load()
     ball.y = 400
     ball.width = 10
     ball.height = 10
+    ball.dx = 10
+    ball.dy = 10
+    ball.speed = 30
 end
 
 function love.update(dt)
@@ -30,6 +33,9 @@ function love.update(dt)
    if love.keyboard.isDown("right") or love.keyboard.isDown("d") then
         myrectangle.x = myrectangle.x + (myrectangle.speed * dt)
    end
+
+   ball.x = ball.x + ball.dx * ball.speed * dt
+   ball.y = ball.y + ball.dy * ball.speed * dt
 end
 
 function love.draw()
