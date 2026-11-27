@@ -30,19 +30,19 @@ end
 
 function love.update(dt)
    if love.keyboard.isDown("up") then
-        player1.y = player1.y - (player1.speed * dt)
-   end
-
-   if love.keyboard.isDown("down") then
-        player1.y = player1.y + (player1.speed * dt)
-   end
-
-   if love.keyboard.isDown("w") then
         player2.y = player2.y - (player2.speed * dt)
    end
 
+   if love.keyboard.isDown("down") then
+        player2.y = player2.y + (player2.speed * dt)
+   end
+
+   if love.keyboard.isDown("w") then
+        player1.y = player1.y - (player1.speed * dt)
+   end
+
    if love.keyboard.isDown("s") then
-        player2.y = player2.y + (player2.speed *dt)
+        player1.y = player1.y + (player1.speed *dt)
    end
 
    ball.x = ball.x + ball.dx * ball.speed * dt
@@ -57,6 +57,10 @@ function love.update(dt)
    end
 
    if checkCollision(player1, ball) then
+        ball.dx = -ball.dx
+   end
+
+   if checkCollision(player2, ball) then
         ball.dx = -ball.dx
    end
 end
