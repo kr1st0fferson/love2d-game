@@ -54,9 +54,11 @@ function love.update(dt)
    if ball.y < 0 then
         ball.y = 0
         ball.dy = -ball.dy --[[ flips in the vertical direction ]]
+        sndWall:stop(); sndWall:play()
    elseif ball.y + ball.width + ball.height > win_height then 
         ball.y = win_height - (ball.width + ball.height)
         ball.dy = -ball.dy
+        sndWall:stop(); sndWall:play()
    end
 
    if checkCollision(player1, ball) then
