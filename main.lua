@@ -7,7 +7,6 @@ function love.load()
     player1.y = 300
     player1.width = 10
     player1.height = 90
-
     player1.speed = 300
 
     player2= {}
@@ -15,7 +14,6 @@ function love.load()
     player2.y = 300
     player2.width = 10
     player2.height = 90
-
     player2.speed = 300
 
     ball = {}
@@ -45,13 +43,14 @@ function love.update(dt)
         player1.y = player1.y + (player1.speed *dt)
    end
 
-   -- paddles wont go offscreen                  (    v   paddles size  v    )
+   -- paddles wont go offscreen
    player1.y = math.max(0, math.min(win_height - player1.height, player1.y))
    player2.y = math.max(0, math.min(win_height - player2.height, player2.y))
 
    ball.x = ball.x + ball.dx * ball.speed * dt
    ball.y = ball.y + ball.dy * ball.speed * dt
 
+   -- when ball hits the wall
    if ball.y < 0 then
         ball.y = 0
         ball.dy = -ball.dy --[[ flips in the vertical direction ]]
