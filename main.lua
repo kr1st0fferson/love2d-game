@@ -69,7 +69,7 @@ function love.draw()
      -- net between the two paddles
      love.graphics.setColor(1,1,1)
      for y = 0, win_height, 40 do  -- for i = 0 to win_height step 40
-          love.graphics.rectangle("fill", win_width/2 - 2, y, 4, 16)
+          love.graphics.rectangle("fill", win_width/2, y, 4, 16)
      end
 
     love.graphics.setColor(1,0,1)
