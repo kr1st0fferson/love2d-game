@@ -45,6 +45,10 @@ function love.update(dt)
         player1.y = player1.y + (player1.speed *dt)
    end
 
+   -- paddles wont go offscreen                  (    v   paddles size  v    )
+   player1.y = math.max(0, math.min(win_height - player1.width - player1.height, player1.y))
+   player2.y = math.max(0, math.min(win_height - player2.width - player2.height, player2.y))
+
    ball.x = ball.x + ball.dx * ball.speed * dt
    ball.y = ball.y + ball.dy * ball.speed * dt
 
@@ -72,14 +76,23 @@ function love.draw()
           love.graphics.rectangle("fill", win_width/2, y, 4, 16)
      end
 
+     -- player1
     love.graphics.setColor(1,0,1)
     love.graphics.rectangle("fill", player1.x, player1.y, player1.width, player1.height)
 
+    -- player2 
     love.graphics.setColor(1,1,0)
     love.graphics.rectangle("fill", player2.x, player2.y, player2.width, player2.height)
 
+    -- ball
     love.graphics.setColor(0,1,1)
     love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
+
+    -- score
+    love.graphics.setColor(1,1,1)
+    love.graphics.printf(tostring(player1.score), 0, 20, win_width/2 - 30, "right")
+    love.graphics.printf(tostring(player2.score), win_width/2+30, 20, win_width/2 +30, "left")
+
 end
 
 function checkCollision(a, b)
