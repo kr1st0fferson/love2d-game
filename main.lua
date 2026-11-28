@@ -66,6 +66,12 @@ function love.update(dt)
 end
 
 function love.draw()
+     -- net between the two paddles
+     love.graphics.setColor(1,1,1)
+     for y = 0, win_height, 30 do
+          love.graphics.rectangle("fill", win_width / 2 - 2, y, 4, 16)
+     end
+
     love.graphics.setColor(1,0,1)
     love.graphics.rectangle("fill", player1.x, player1.y, player1.width, player1.height)
 
