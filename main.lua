@@ -1,4 +1,7 @@
 function love.load()
+     local state = "title"
+     local winner = nil
+
     win_height = 600
     win_width = 800
 
@@ -8,6 +11,7 @@ function love.load()
     player1.width = 10
     player1.height = 90
     player1.speed = 300
+    player1.score = 0
 
     player2= {}
     player2.x = 780
@@ -15,6 +19,7 @@ function love.load()
     player2.width = 10
     player2.height = 90
     player2.speed = 300
+    player2.score = 0
 
     ball = {}
     ball.x = 400
@@ -24,6 +29,8 @@ function love.load()
     ball.dx = 10
     ball.dy = 10
     ball.speed = 25
+
+    score_to_win = 5
 end
 
 function love.update(dt)
@@ -54,11 +61,9 @@ function love.update(dt)
    if ball.y < 0 then
         ball.y = 0
         ball.dy = -ball.dy --[[ flips in the vertical direction ]]
-        sndWall:stop(); sndWall:play()
    elseif ball.y + ball.width + ball.height > win_height then 
         ball.y = win_height - (ball.width + ball.height)
         ball.dy = -ball.dy
-        sndWall:stop(); sndWall:play()
    end
 
    if checkCollision(player1, ball) then
@@ -67,6 +72,24 @@ function love.update(dt)
 
    if checkCollision(player2, ball) then
         ball.dx = -ball.dx
+   end
+
+   -- score 1 point 
+   if ball.x + ball.width + ball.height < 0 then
+          player2.score = player2.score + 1
+
+   elseif ball.x + ball.width + ball.height > win_height then
+          player1.score = player1.score + 1
+   end
+
+
+   -- win screen
+   if player1.score >= score_to_win then
+          winner = "player 1"
+          state = "win"
+   elseif player2.score >= score_to_win then
+          winner = "player 2"
+          state = "win"
    end
 end
 
