@@ -46,8 +46,8 @@ function love.update(dt)
    end
 
    -- paddles wont go offscreen                  (    v   paddles size  v    )
-   player1.y = math.max(0, math.min(win_height - player1.width - player1.height, player1.y))
-   player2.y = math.max(0, math.min(win_height - player2.width - player2.height, player2.y))
+   player1.y = math.max(0, math.min(win_height - player1.height, player1.y))
+   player2.y = math.max(0, math.min(win_height - player2.height, player2.y))
 
    ball.x = ball.x + ball.dx * ball.speed * dt
    ball.y = ball.y + ball.dy * ball.speed * dt
