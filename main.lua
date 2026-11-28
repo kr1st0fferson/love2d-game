@@ -69,10 +69,10 @@ function love.draw()
     love.graphics.setColor(1,0,1)
     love.graphics.rectangle("fill", player1.x, player1.y, player1.width, player1.height)
 
-    love.graphics.setColor(1,1,1)
+    love.graphics.setColor(1,1,0)
     love.graphics.rectangle("fill", player2.x, player2.y, player2.width, player2.height)
 
-    love.graphics.setColor(1,1,1)
+    love.graphics.setColor(0,1,1)
     love.graphics.rectangle("fill", ball.x, ball.y, ball.width, ball.height)
 end
 
