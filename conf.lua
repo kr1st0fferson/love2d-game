@@ -5,4 +5,5 @@ function love.conf(t)
     t.window.resizable = false
     t.modules.joystick = false --love2d said to write this so that execution is faster
     t.window.fullscreen = false
+    t.vsync = true
 end
